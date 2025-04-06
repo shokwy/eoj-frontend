@@ -6,5 +6,6 @@ import router from "./router";
 import store from "./store";
 import "./plugins/axios";
 import "./access/index";
+import "bytemd/dist/index.css";
 
 createApp(App).use(store).use(ArcoVue).use(router).mount("#app");

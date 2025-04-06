@@ -6,6 +6,10 @@ import AccessEnum from "@/access/accessEnum";
 import UserLoginView from "@/views/user/UserLoginView.vue";
 import UserRegisterView from "@/views/user/UserRegisterView.vue";
 import UserLayout from "@/layouts/UserLayout.vue";
+import AddQuestionView from "@/views/question/AddQuestionView.vue";
+import ManageQuestionView from "@/views/question/ManageQuestionView.vue";
+import QuestionView from "@/views/question/QuestionView.vue";
+import ViewQuestionView from "@/views/question/ViewQuestionView.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -30,15 +34,50 @@ export const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/",
-    name: "浏览",
-    component: HomeView,
+    name: "浏览题目",
+    component: QuestionView,
   },
+  // {
+  //   path: "/admin",
+  //   name: "管理员页面",
+  //   component: AdminView,
+  //   meta: {
+  //     access: AccessEnum.ADMIN,
+  //   },
+  // },
   {
-    path: "/admin",
-    name: "管理员页面",
-    component: AdminView,
+    path: "/add/question",
+    name: "创建题目",
+    component: AddQuestionView,
     meta: {
       access: AccessEnum.ADMIN,
+    },
+  },
+  {
+    path: "/view/question/:id",
+    name: "在线做题",
+    component: ViewQuestionView,
+    props: true,
+    meta: {
+      access: AccessEnum.USER,
+      hideInMenu: true,
+    },
+  },
+  {
+    path: "/manage/question",
+    name: "管理题目",
+    component: ManageQuestionView,
+    meta: {
+      access: AccessEnum.ADMIN,
+    },
+  },
+  {
+    path: "/update/question",
+    name: "更新题目",
+    component: AddQuestionView,
+    meta: {
+      access: AccessEnum.ADMIN,
+      hideInMenu: true,
     },
   },
   {
